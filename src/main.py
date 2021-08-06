@@ -12,7 +12,7 @@ from telegram.ext import (
     CallbackContext,
 )
 
-USERID = 0
+
 TOKEN = sys.argv[1]
 
 # Enable logging
@@ -113,10 +113,6 @@ def done(update: Update, context: CallbackContext) -> int:
         f"I learned these facts about you: {facts_to_str(context.user_data)}Until next time!",
         reply_markup=ReplyKeyboardRemove(),
     )
-    global USERID
-    with open(f"info{USERID}.txt", "w") as file:
-        file.write(facts_to_str(context.user_data))
-    USERID += 1
     return ConversationHandler.END
 
 

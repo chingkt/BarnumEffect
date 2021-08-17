@@ -141,7 +141,7 @@ def occupation(update: Update, context: CallbackContext) -> int:
         update.message.reply_text("...")
 
     time.sleep(2)
-    update.message.reply_text(f'{user.info["nickname"]}！作為{user.info["star"]}...')
+    update.message.reply_text(f'{user.info["nickname"]}！作為{user.info["star"]}嘅你係一個on lun 99傻閪星座撚')
     time.sleep(4)
     update.message.reply_text(f'覺得以上分析準唔準？請俾0至10分！')
 

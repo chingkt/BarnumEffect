@@ -168,7 +168,6 @@ def score(update: Update, context: CallbackContext) -> int:
     return ConversationHandler.END
 
 
-
 def main() -> None:
     """Run the bot."""
     # Create the Updater and pass it your bot's token.

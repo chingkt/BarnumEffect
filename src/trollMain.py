@@ -2,6 +2,7 @@ import logging
 import os
 import time
 from database import add_entry
+from stickers import *
 from user import User
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove, Update
 from telegram.ext import (
@@ -143,7 +144,13 @@ def occupation(update: Update, context: CallbackContext) -> int:
     time.sleep(2)
     update.message.reply_text(f'{user.info["nickname"]}！作為{user.info["star"]}嘅你係一個on lun 99傻閪星座撚')
     time.sleep(4)
-    update.message.reply_text(f'覺得以上分析準唔準？請俾0至10分！')
+    update.message.reply_sticker(sticker1)
+    time.sleep(2)
+    update.message.reply_sticker(sticker2)
+    time.sleep(2)
+    update.message.reply_sticker(sticker3)
+    time.sleep(4)
+    update.message.reply_text(f'覺得以上分析準唔準？請俾0至10分！千其咪俾0分呀屌你老母！')
 
     return SCORE
 

@@ -162,10 +162,12 @@ def score(update: Update, context: CallbackContext) -> int:
         update.message.reply_text("零分重作")
         logger.info("Asked user %s to retype the score.", user.info["tg_name"])
         return SCORE
-
+    if int(score_info) == 0:
+        update.message.reply_text("屌你老母星座撚")
     user.info["score"] = score_info
     logger.info("Score of %s: %s", user.info["tg_name"], score_info)
-    update.message.reply_text(f'如果覺得準嘅歡迎share俾朋友！再見。')
+    if int(score_info) != 0:
+        update.message.reply_text(f'如果覺得準嘅歡迎share俾朋友！再見。')
     logger.info("Info of %s is: %s", user.info["tg_name"], user.info)
     add_entry(user.info)
     logger.info("Info of %s stored in database", user.info["tg_name"])

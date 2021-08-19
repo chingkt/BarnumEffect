@@ -13,7 +13,7 @@ whitesheep = "牡羊座"
 
 
 def analysis(star: str) -> str:
-
+    """generates an analysis text based on 12 constellations"""
     if star == archer:
         with open("data/archer.txt", encoding="utf8") as f:
             return "".join(f.readlines())

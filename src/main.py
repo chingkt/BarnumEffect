@@ -4,7 +4,6 @@ import time
 
 from analysis import analysis
 from database import add_entry
-from stickers import *
 from user import User
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove, Update
 from telegram.ext import (
@@ -28,8 +27,7 @@ users = dict()
 
 
 def start(update: Update, context: CallbackContext) -> int:
-    """Starts the conversation and asks the user about their gender.
-    type /restart to restart"""
+    """Starts the conversation and asks the user about their gender."""
     reply_keyboard = [['巴打', '絲打']]
     user = User(update.message.from_user.id)
     users[user.tg_id] = user
@@ -64,7 +62,7 @@ def gender(update: Update, context: CallbackContext) -> int:
 
 
 def name(update: Update, context: CallbackContext) -> int:
-    """ask for star."""
+    """ask for the constellation of the user."""
     nickname = update.message.text
     user = users.get(update.message.from_user.id)
     user.info["nickname"] = nickname
@@ -95,7 +93,7 @@ def star(update: Update, context: CallbackContext) -> int:
 
 
 def age(update: Update, context: CallbackContext) -> int:
-    """Stores the info about the user and ends the conversation."""
+    """asks for occupation."""
     age_info = update.message.text
     user = users.get(update.message.from_user.id)
     if not (age_info.isnumeric() and 0 < int(age_info) < 100):
@@ -128,6 +126,7 @@ def age(update: Update, context: CallbackContext) -> int:
 
 
 def occupation(update: Update, context: CallbackContext) -> int:
+    """generate the analysis text based the constellation of user"""
     occupation_info = update.message.text
     user = users.get(update.message.from_user.id)
     user.info["occupation"] = occupation_info
@@ -150,6 +149,7 @@ def occupation(update: Update, context: CallbackContext) -> int:
 
 
 def score(update: Update, context: CallbackContext) -> int:
+    """asks user to rate the accuracy of the analysis from a scale of 0 to 10"""
     user = users.get(update.message.from_user.id)
     score_info = update.message.text
     if not (score_info.isnumeric() and 0 <= int(score_info) <= 10):
@@ -199,9 +199,6 @@ def main() -> None:
     # Start the Bot
     updater.start_polling()
 
-    # Run the bot until you press Ctrl-C or the process receives SIGINT,
-    # SIGTERM or SIGABRT. This should be used most of the time, since
-    # start_polling() is non-blocking and will stop the bot gracefully.
     updater.idle()
 
 

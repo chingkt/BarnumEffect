@@ -1,6 +1,6 @@
 import pymysql
 import os
-
+"""connects the database from AWS RDS"""
 username = os.environ["username"]
 pw = os.environ["pw"]
 host = os.environ["host"]

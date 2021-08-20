@@ -9,6 +9,6 @@ Telegram bot hosting on AWS E2 and RDS using python.
 The bot investigates which groups of people in the society are easier to be affected by the Barnum effect.
 
 1. The bot first asks basic background information of the user, e.g. nickname, gender, age, education level etc.
-2. The bot lies to the user, claiming to generate a tailor-made discriptions of the user's personality, but in fact the description was specially designed with high-probability guesses.
+2. The bot lies to the user, claiming to generate a tailor-made discriptions of the user's personality, but in fact the description was intentionally designed with high-probability guesses.
 3. At the end the bot asks user to rate the accuracy of the personality description ranging from 0 to 10.
 4. The datapoints are stored in an AWS RDS database for further analysis.
